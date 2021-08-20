@@ -1,12 +1,8 @@
-const express = require('express');
-const app = express();
+const app = require('./app');
+const port = 8080;
 
-app.get('/', (req, res, next) => {
-  res.json({
-    'status': 'sukces'
-  });
-});
+app.set('port', process.env.port || port);
 
-app.listen(8080, () => {
-  console.log("Nasluchiwanie portu 8080");
-});
+const server = app.listen(app.get('port'), () => {
+  console.log(`Nasluchiwanie portu ${server.address().port}`)
+})
