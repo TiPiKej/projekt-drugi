@@ -6,13 +6,18 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.post('/api/addUser', (req, res) => {
-  console.log(req.body)
+  const data = {
+    'name': req.body.name || "",
+    'surname': req.body.surname || "",
+    'address': req.body.address || ""
+  }
+
 	res.json({
     'status': 'sukces',
     'data': {
-      'name': req.body.name,
-      'surname': req.body.surname,
-      'address': req.body.address
+      'name': data.name,
+      'surname': data.surname,
+      'address': data.address
     }
   });
 })
