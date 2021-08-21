@@ -1,10 +1,10 @@
 const sqlite3 = require('sqlite3').verbose()
-const md5 = require('md5')
 
-const db = new sqlite3.Database("/users.sqlite", err => {
+const db = new sqlite3.Database("./users.sqlite", err => {
     if (err) {
       console.error(err.message)
-      throw err
+      throw err;
+      return;
     }
 
     db.run(`CREATE TABLE users (
@@ -12,7 +12,7 @@ const db = new sqlite3.Database("/users.sqlite", err => {
       name TEXT, 
       surname TEXT, 
       address TEXT
-    )`);
+    )`, err => {});
 });
 
 
